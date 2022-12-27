@@ -20,7 +20,7 @@ const dataDirs = [
   '2017 08 9 Quepos',
 ]
 const dataDir =
-  'D:\\Dropbox\\Gabriel_Multimedia\\Bilder\\2017\\2017 08 3 Puerto Viejo de Sarapiqui - Kopie'
+  'D:\\Dropbox\\Gabriel_Multimedia\\Bilder\\2017\\costa_rica_renaming'
 // use this line instead of above to test
 //const dataDir = `${process.cwd()}\\testdata`
 

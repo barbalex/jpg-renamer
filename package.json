@@ -11,6 +11,7 @@
   "dependencies": {
     "datauri": "^1.0.5",
     "file-type": "^7.4.0",
+    "fs-extra": "^11.1.0",
     "lodash": "^4.17.4",
     "moment": "^2.19.3",
     "piexifjs": "^1.0.3"
