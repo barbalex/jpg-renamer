@@ -2,38 +2,46 @@
 # yarn lockfile v1
 
 
-datauri@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/datauri/-/datauri-1.0.5.tgz#d0975d1ab6c8f2e0ce3ca43baa4539be12d289a0"
+"datauri@^1.0.5":
+  "integrity" "sha512-zYDBSz5GtdWXAiOIQCQDdHxHLPRiXEZwUxK4/RG4MJ07+QpzJ4pr4lgN2q7MqzUHyOx9WFucBuJofu3fgclOTw=="
+  "resolved" "https://registry.npmjs.org/datauri/-/datauri-1.0.5.tgz"
+  "version" "1.0.5"
   dependencies:
-    image-size "^0.3.5"
-    mimer "^0.2.1"
-    semver "^5.0.3"
+    "image-size" "^0.3.5"
+    "mimer" "^0.2.1"
+    "semver" "^5.0.3"
 
-file-type@^7.4.0:
-  version "7.4.0"
-  resolved "https://registry.yarnpkg.com/file-type/-/file-type-7.4.0.tgz#2a7c94f62a0030150bb7d9b6c70cfa1d3e759c86"
+"file-type@^7.4.0":
+  "integrity" "sha512-J01kvqc8K+wgKmvpO/GOPwiTBzpm+wdFn16v3+M8ps59e2xPf7AxoBCDtVbGeniici4QnzSGpkAnJTSVzsHD/A=="
+  "resolved" "https://registry.npmjs.org/file-type/-/file-type-7.4.0.tgz"
+  "version" "7.4.0"
 
-image-size@^0.3.5:
-  version "0.3.5"
-  resolved "https://registry.yarnpkg.com/image-size/-/image-size-0.3.5.tgz#83240eab2fb5b00b04aab8c74b0471e9cba7ad8c"
+"image-size@^0.3.5":
+  "integrity" "sha512-naH1FVkLBoWjY1ljAzPbITSiZC4mk4+nNonkMncF1kulHn9wLxNOMJ54LG9M86oqbSRNW60IARHR/E/lZBBC9g=="
+  "resolved" "https://registry.npmjs.org/image-size/-/image-size-0.3.5.tgz"
+  "version" "0.3.5"
 
-lodash@^4.17.4:
-  version "4.17.4"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
+"lodash@^4.17.4":
+  "integrity" "sha512-6X37Sq9KCpLSXEh8uM12AKYlviHPNNk4RxiGBn4cmKGJinbXBneWIV7iE/nXkM928O7ytHcHb6+X6Svl0f4hXg=="
+  "resolved" "https://registry.npmjs.org/lodash/-/lodash-4.17.4.tgz"
+  "version" "4.17.4"
 
-mimer@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/mimer/-/mimer-0.2.1.tgz#c63c5a17fe86423f5161a85d55c3ed5189baaffc"
+"mimer@^0.2.1":
+  "integrity" "sha512-+lVDSMXUpAqciSpjbiIs+EUmXGiNgQiToJI0Zp2Y8JfDSECUvsKF4dU8tN/aQj5NunSjH2wQSUoUtm38vzXT9Q=="
+  "resolved" "https://registry.npmjs.org/mimer/-/mimer-0.2.1.tgz"
+  "version" "0.2.1"
 
-moment@^2.19.3:
-  version "2.19.3"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.19.3.tgz#bdb99d270d6d7fda78cc0fbace855e27fe7da69f"
+"moment@^2.19.3":
+  "integrity" "sha512-SiZ1HUDMfBpfCzL1Hm1vxUFkYDbHx8/RiWBLF+5qoVWTlBGtR15+wVQB7eSD/0w3ueDxzojlX9LQtiKVpLMsFQ=="
+  "resolved" "https://registry.npmjs.org/moment/-/moment-2.19.3.tgz"
+  "version" "2.19.3"
 
-piexifjs@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/piexifjs/-/piexifjs-1.0.3.tgz#99974058c0d2cb1fb8a92754c486fba4d8b3b0f0"
+"piexifjs@^1.0.3":
+  "integrity" "sha512-45L5AD0DS4dcQ66NXH30gU2wMijRhbsXTR1ISR3LwFDsVjvENcRrhiLy/fNpWKW707Sja5x4H6kQ86/o04P0tg=="
+  "resolved" "https://registry.npmjs.org/piexifjs/-/piexifjs-1.0.3.tgz"
+  "version" "1.0.3"
 
-semver@^5.0.3:
-  version "5.4.1"
-  resolved "https://registry.yarnpkg.com/semver/-/semver-5.4.1.tgz#e059c09d8571f0540823733433505d3a2f00b18e"
+"semver@^5.0.3":
+  "integrity" "sha512-WfG/X9+oATh81XtllIo/I8gOiY9EXRdv1cQdyykeXK17YcUW3EXUAi2To4pcH6nZtJPr7ZOpM5OMyWJZm+8Rsg=="
+  "resolved" "https://registry.npmjs.org/semver/-/semver-5.4.1.tgz"
+  "version" "5.4.1"
