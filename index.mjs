@@ -57,7 +57,7 @@ async function executeForAllFilesInDir(dir) {
       const fileType = await fileTypeFromFile(filePath)
       const mimeType = fileType?.mime
       if (mimeType !== 'image/jpeg') {
-        const logMessage = `skipping ${filePath}, because it's mimetype ${mimeType} is not a jpeg`
+        const logMessage = `Skipping ${filePath}, as ${mimeType} is not jpeg`
         console.log(logMessage)
         logFile.write(format(logMessage) + '\n')
         return
@@ -83,10 +83,16 @@ async function executeForAllFilesInDir(dir) {
       // only rename if name changes
       if (newBaseFileName !== baseFileName) {
         const newPath = `${dir}\\${newBaseFileName}.jpg`
-        const logMessage = `Renaming '${filePath}' to '${newPath}'`
+        const logMessage = `Renaming${
+          changeTime ? 'and time-shifting' : ''
+        } '${filePath}' to '${newPath}'`
         console.log(logMessage)
         logFile.write(format(logMessage) + '\n')
         fs.renameSync(filePath, newPath)
+      } else {
+        const logMessage = `Skipping '${filePath}' as name is correct`
+        console.log(logMessage)
+        logFile.write(format(logMessage) + '\n')
       }
     }
   }
