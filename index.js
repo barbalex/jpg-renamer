@@ -20,12 +20,13 @@ const dataDirs = [
   '2017 08 9 Quepos',
 ]
 const dataDir =
-  'D:\\Dropbox\\Gabriel_Multimedia\\Bilder\\2017\\costa_rica_renaming'
+  'D:\\Dropbox\\Familienbereich\\Gabriel_Multimedia\\Bilder\\2017\\costa_rica_renaming'
 // use this line instead of above to test
 //const dataDir = `${process.cwd()}\\testdata`
 
 // 2. set the model of camera whose time setting was off
-const cameraModel = 'SM-G950F'
+// const cameraModelWithCorrectTime = 'SM-G950F' // handy Barbara
+const cameraModels = ['TG-5', 'DMC-FZ2000']
 
 // 3. set the time difference to correct for in milliseconds
 // this number will be added to recorded time
@@ -55,13 +56,13 @@ function executeForAllFilesInDir(dir) {
         datauri.format('.jpg', file)
         const exifData = piexif.load(datauri.content)
         const model = get(exifData, '0th.272', null)
-        if (model === cameraModel) {
+        if (cameraModels.includes(model)) {
           const dateTimeString = get(exifData, 'Exif.36867', null)
           // console.log('dateTimeString:', dateTimeString)
           if (dateTimeString) {
             let dateTime = moment(dateTimeString, 'YYYY:MM:DD HH:mm:ss')
             // compensate for wrong time on camera
-            dateTime = dateTime - timeDiff
+            dateTime = dateTime + timeDiff
             const newBaseFileName = moment(dateTime).format(
               'YYYY-MM-DD HH-mm-ss',
             )

@@ -2,74 +2,74 @@
 # yarn lockfile v1
 
 
-"datauri@^1.0.5":
-  "integrity" "sha512-zYDBSz5GtdWXAiOIQCQDdHxHLPRiXEZwUxK4/RG4MJ07+QpzJ4pr4lgN2q7MqzUHyOx9WFucBuJofu3fgclOTw=="
-  "resolved" "https://registry.npmjs.org/datauri/-/datauri-1.0.5.tgz"
-  "version" "1.0.5"
+datauri@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.npmjs.org/datauri/-/datauri-1.0.5.tgz"
+  integrity sha512-zYDBSz5GtdWXAiOIQCQDdHxHLPRiXEZwUxK4/RG4MJ07+QpzJ4pr4lgN2q7MqzUHyOx9WFucBuJofu3fgclOTw==
   dependencies:
-    "image-size" "^0.3.5"
-    "mimer" "^0.2.1"
-    "semver" "^5.0.3"
+    image-size "^0.3.5"
+    mimer "^0.2.1"
+    semver "^5.0.3"
 
-"file-type@^7.4.0":
-  "integrity" "sha512-J01kvqc8K+wgKmvpO/GOPwiTBzpm+wdFn16v3+M8ps59e2xPf7AxoBCDtVbGeniici4QnzSGpkAnJTSVzsHD/A=="
-  "resolved" "https://registry.npmjs.org/file-type/-/file-type-7.4.0.tgz"
-  "version" "7.4.0"
+file-type@^7.4.0:
+  version "7.4.0"
+  resolved "https://registry.npmjs.org/file-type/-/file-type-7.4.0.tgz"
+  integrity sha512-J01kvqc8K+wgKmvpO/GOPwiTBzpm+wdFn16v3+M8ps59e2xPf7AxoBCDtVbGeniici4QnzSGpkAnJTSVzsHD/A==
 
-"fs-extra@^11.1.0":
-  "integrity" "sha512-0rcTq621PD5jM/e0a3EJoGC/1TC5ZBCERW82LQuwfGnCa1V8w7dpYH1yNu+SLb6E5dkeCBzKEyLGlFrnr+dUyw=="
-  "resolved" "https://registry.npmjs.org/fs-extra/-/fs-extra-11.1.0.tgz"
-  "version" "11.1.0"
+fs-extra@^11.1.0:
+  version "11.1.0"
+  resolved "https://registry.npmjs.org/fs-extra/-/fs-extra-11.1.0.tgz"
+  integrity sha512-0rcTq621PD5jM/e0a3EJoGC/1TC5ZBCERW82LQuwfGnCa1V8w7dpYH1yNu+SLb6E5dkeCBzKEyLGlFrnr+dUyw==
   dependencies:
-    "graceful-fs" "^4.2.0"
-    "jsonfile" "^6.0.1"
-    "universalify" "^2.0.0"
+    graceful-fs "^4.2.0"
+    jsonfile "^6.0.1"
+    universalify "^2.0.0"
 
-"graceful-fs@^4.1.6", "graceful-fs@^4.2.0":
-  "integrity" "sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA=="
-  "resolved" "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.10.tgz"
-  "version" "4.2.10"
+graceful-fs@^4.1.6, graceful-fs@^4.2.0:
+  version "4.2.10"
+  resolved "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.10.tgz"
+  integrity sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==
 
-"image-size@^0.3.5":
-  "integrity" "sha512-naH1FVkLBoWjY1ljAzPbITSiZC4mk4+nNonkMncF1kulHn9wLxNOMJ54LG9M86oqbSRNW60IARHR/E/lZBBC9g=="
-  "resolved" "https://registry.npmjs.org/image-size/-/image-size-0.3.5.tgz"
-  "version" "0.3.5"
+image-size@^0.3.5:
+  version "0.3.5"
+  resolved "https://registry.npmjs.org/image-size/-/image-size-0.3.5.tgz"
+  integrity sha512-naH1FVkLBoWjY1ljAzPbITSiZC4mk4+nNonkMncF1kulHn9wLxNOMJ54LG9M86oqbSRNW60IARHR/E/lZBBC9g==
 
-"jsonfile@^6.0.1":
-  "integrity" "sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ=="
-  "resolved" "https://registry.npmjs.org/jsonfile/-/jsonfile-6.1.0.tgz"
-  "version" "6.1.0"
+jsonfile@^6.0.1:
+  version "6.1.0"
+  resolved "https://registry.npmjs.org/jsonfile/-/jsonfile-6.1.0.tgz"
+  integrity sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==
   dependencies:
-    "universalify" "^2.0.0"
+    universalify "^2.0.0"
   optionalDependencies:
-    "graceful-fs" "^4.1.6"
+    graceful-fs "^4.1.6"
 
-"lodash@^4.17.4":
-  "integrity" "sha512-6X37Sq9KCpLSXEh8uM12AKYlviHPNNk4RxiGBn4cmKGJinbXBneWIV7iE/nXkM928O7ytHcHb6+X6Svl0f4hXg=="
-  "resolved" "https://registry.npmjs.org/lodash/-/lodash-4.17.4.tgz"
-  "version" "4.17.4"
+lodash@^4.17.4:
+  version "4.17.4"
+  resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.4.tgz"
+  integrity sha512-6X37Sq9KCpLSXEh8uM12AKYlviHPNNk4RxiGBn4cmKGJinbXBneWIV7iE/nXkM928O7ytHcHb6+X6Svl0f4hXg==
 
-"mimer@^0.2.1":
-  "integrity" "sha512-+lVDSMXUpAqciSpjbiIs+EUmXGiNgQiToJI0Zp2Y8JfDSECUvsKF4dU8tN/aQj5NunSjH2wQSUoUtm38vzXT9Q=="
-  "resolved" "https://registry.npmjs.org/mimer/-/mimer-0.2.1.tgz"
-  "version" "0.2.1"
+mimer@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.npmjs.org/mimer/-/mimer-0.2.1.tgz"
+  integrity sha512-+lVDSMXUpAqciSpjbiIs+EUmXGiNgQiToJI0Zp2Y8JfDSECUvsKF4dU8tN/aQj5NunSjH2wQSUoUtm38vzXT9Q==
 
-"moment@^2.19.3":
-  "integrity" "sha512-SiZ1HUDMfBpfCzL1Hm1vxUFkYDbHx8/RiWBLF+5qoVWTlBGtR15+wVQB7eSD/0w3ueDxzojlX9LQtiKVpLMsFQ=="
-  "resolved" "https://registry.npmjs.org/moment/-/moment-2.19.3.tgz"
-  "version" "2.19.3"
+moment@^2.19.3:
+  version "2.19.3"
+  resolved "https://registry.npmjs.org/moment/-/moment-2.19.3.tgz"
+  integrity sha512-SiZ1HUDMfBpfCzL1Hm1vxUFkYDbHx8/RiWBLF+5qoVWTlBGtR15+wVQB7eSD/0w3ueDxzojlX9LQtiKVpLMsFQ==
 
-"piexifjs@^1.0.3":
-  "integrity" "sha512-45L5AD0DS4dcQ66NXH30gU2wMijRhbsXTR1ISR3LwFDsVjvENcRrhiLy/fNpWKW707Sja5x4H6kQ86/o04P0tg=="
-  "resolved" "https://registry.npmjs.org/piexifjs/-/piexifjs-1.0.3.tgz"
-  "version" "1.0.3"
+piexifjs@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/piexifjs/-/piexifjs-1.0.3.tgz"
+  integrity sha512-45L5AD0DS4dcQ66NXH30gU2wMijRhbsXTR1ISR3LwFDsVjvENcRrhiLy/fNpWKW707Sja5x4H6kQ86/o04P0tg==
 
-"semver@^5.0.3":
-  "integrity" "sha512-WfG/X9+oATh81XtllIo/I8gOiY9EXRdv1cQdyykeXK17YcUW3EXUAi2To4pcH6nZtJPr7ZOpM5OMyWJZm+8Rsg=="
-  "resolved" "https://registry.npmjs.org/semver/-/semver-5.4.1.tgz"
-  "version" "5.4.1"
+semver@^5.0.3:
+  version "5.4.1"
+  resolved "https://registry.npmjs.org/semver/-/semver-5.4.1.tgz"
+  integrity sha512-WfG/X9+oATh81XtllIo/I8gOiY9EXRdv1cQdyykeXK17YcUW3EXUAi2To4pcH6nZtJPr7ZOpM5OMyWJZm+8Rsg==
 
-"universalify@^2.0.0":
-  "integrity" "sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ=="
-  "resolved" "https://registry.npmjs.org/universalify/-/universalify-2.0.0.tgz"
-  "version" "2.0.0"
+universalify@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/universalify/-/universalify-2.0.0.tgz"
+  integrity sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==
