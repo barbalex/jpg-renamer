@@ -44,69 +44,73 @@ const cameraModelsWithOffTime = ['TG-5', 'DMC-FZ2000']
 // diff: -16 h 1 min 54 sec
 const timeDiff = 16 * 60 * 60 * 1000 + 1 * 60 * 1000 + 54 * 1000
 
+let count = 0
+let skippedDueToMimeCount = 0
+let skippedDueToCorrectNameCount = 0
+let renamedCount = 0
+let timeShiftedCount = 0
+
 async function executeForAllFilesInDir(dir) {
   // reads all files in directory...
   const files = fs.readdirSync(dir)
   // ...and loop them
-  let count = 0
-  let skippedDueToMimeCount = 0
-  let skippedDueToCorrectNameCount = 0
-  let renamedCount = 0
-  let timeShiftedCount = 0
-  for (await const fileName of files) {
+  for await (const fileName of files) {
     const filePath = `${dir}\\${fileName}`
     // call this function recursively for contained directories
     if (fs.statSync(filePath).isDirectory()) {
       executeForAllFilesInDir(filePath)
-    } else {
-      count++
-      const fileType = await fileTypeFromFile(filePath)
-      const mimeType = fileType?.mime
-      if (mimeType !== 'image/jpeg') {
-        const logMessage = `Skipping ${filePath}, as ${mimeType} is not jpeg`
-        console.log(logMessage)
-        logFile.write(format(logMessage) + '\n')
-        skippedDueToMimeCount++
-        return
-      }
-      const file = fs.readFileSync(filePath)
-      // piexif wants to receive a base-64 formatted string
-      const parsedFile = parser.format('.jpg', file)
-      const exifData = piexif.load(parsedFile.content)
-      const dateTimeString = exifData.Exif[36867]
-      if (!dateTimeString) continue
-
-      let dateTime = moment(dateTimeString, 'YYYY:MM:DD HH:mm:ss')
-      // compensate for wrong time on camera
-      const model = exifData['0th'][272]
-      const changeTime = model && cameraModelsWithOffTime.includes(model)
-      if (changeTime) {
-        dateTime = dateTime + timeDiff
-      }
-      const newBaseFileName = moment(dateTime).format('YYYY-MM-DD HH-mm-ss')
-      // extract base file name without extension
-      // source: https://stackoverflow.com/a/4250408/712005
-      const baseFileName = fileName.replace(/\.[^/.]+$/, '')
-      // only rename if name changes
-      if (newBaseFileName !== baseFileName) {
-        const newPath = `${dir}\\${newBaseFileName}.jpg`
-        const logMessage = `Renaming${
-          changeTime ? 'and time-shifting' : ''
-        } '${filePath}' to '${newPath}'`
-        console.log(logMessage)
-        logFile.write(format(logMessage) + '\n')
-        fs.renameSync(filePath, newPath)
-        renamedCount++
-      } else {
-        const logMessage = `Skipping '${filePath}' as name is correct`
-        console.log(logMessage)
-        logFile.write(format(logMessage) + '\n')
-        renamedCount
-      }
+      continue
     }
+    count++
+    const fileType = await fileTypeFromFile(filePath)
+    const mimeType = fileType?.mime
+    if (mimeType !== 'image/jpeg') {
+      const logMessage = `Skipping ${filePath}, as ${mimeType} is not jpeg`
+      console.log(logMessage)
+      logFile.write(format(logMessage) + '\n')
+      skippedDueToMimeCount++
+      return
+    }
+    const file = fs.readFileSync(filePath)
+    // piexif wants to receive a base-64 formatted string
+    const parsedFile = parser.format('.jpg', file)
+    const exifData = piexif.load(parsedFile.content)
+    const dateTimeString = exifData.Exif[36867]
+    if (!dateTimeString) continue
+
+    let dateTime = moment(dateTimeString, 'YYYY:MM:DD HH:mm:ss')
+    // compensate for wrong time on camera
+    const model = exifData['0th'][272]
+    const changeTime = model && cameraModelsWithOffTime.includes(model)
+    if (changeTime) {
+      dateTime = dateTime + timeDiff
+    }
+    const newBaseFileName = moment(dateTime).format('YYYY-MM-DD HH-mm-ss')
+    // extract base file name without extension
+    // https://stackoverflow.com/a/31615711/712005
+    const baseFileName = path.parse(fileName).name
+    // only rename if name changes
+    if (newBaseFileName !== baseFileName) {
+      const newPath = `${dir}\\${newBaseFileName}.jpg`
+      const logMessage = `${
+        changeTime ? 'Time-shifting' : 'Renaming'
+      } '${filePath}' to '${newPath}'`
+      console.log(logMessage)
+      logFile.write(format(logMessage) + '\n')
+      fs.renameSync(filePath, newPath)
+      renamedCount++
+      continue
+    }
+    const logMessage = `Skipping '${filePath}' as name is correct`
+    console.log(logMessage)
+    logFile.write(format(logMessage) + '\n')
+    renamedCount
+    continue
   }
-  const logMessage = `Checked ${count} files, skipped ${skippedDueToMimeCount} files due to mime type and ${skippedDueToCorrectNameCount} files due to correct name, renamed ${renamedCount} files and time-shifted ${timeShiftedCount} files.`
-  console.log(logMessage)
-  logFile.write(format(logMessage) + '\n')
+  return
 }
-executeForAllFilesInDir(dataDir)
+await executeForAllFilesInDir(dataDir)
+
+// const logMessage = `Checked ${count} files, skipped ${skippedDueToMimeCount} files due to mime type and ${skippedDueToCorrectNameCount} files due to correct name, renamed ${renamedCount} files and time-shifted ${timeShiftedCount} files.`
+// console.log(logMessage)
+// logFile.write(format(logMessage) + '\n')
