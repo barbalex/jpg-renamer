@@ -53,7 +53,7 @@ async function executeForAllFilesInDir(dir) {
   let skippedDueToCorrectNameCount = 0
   let renamedCount = 0
   let timeShiftedCount = 0
-  for (const fileName of files) {
+  for (await const fileName of files) {
     const filePath = `${dir}\\${fileName}`
     // call this function recursively for contained directories
     if (fs.statSync(filePath).isDirectory()) {
