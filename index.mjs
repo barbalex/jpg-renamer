@@ -41,7 +41,7 @@ const cameraModelsWithOffTime = ['TG-5', 'DMC-FZ2000']
 // values set: -18 hours
 //             =
 // example: 2017-07-27 13-01-54 to: 2017-07-26 21-00-00
-// diff: -16 h 1 min 54 sec
+// diff: +16 h 1 min 54 sec
 const timeDiff = 16 * 60 * 60 * 1000 + 1 * 60 * 1000 + 54 * 1000
 
 let count = 0
