@@ -48,18 +48,25 @@ async function executeForAllFilesInDir(dir) {
   // reads all files in directory...
   const files = fs.readdirSync(dir)
   // ...and loop them
+  let count = 0
+  let skippedDueToMimeCount = 0
+  let skippedDueToCorrectNameCount = 0
+  let renamedCount = 0
+  let timeShiftedCount = 0
   for (const fileName of files) {
     const filePath = `${dir}\\${fileName}`
     // call this function recursively for contained directories
     if (fs.statSync(filePath).isDirectory()) {
       executeForAllFilesInDir(filePath)
     } else {
+      count++
       const fileType = await fileTypeFromFile(filePath)
       const mimeType = fileType?.mime
       if (mimeType !== 'image/jpeg') {
         const logMessage = `Skipping ${filePath}, as ${mimeType} is not jpeg`
         console.log(logMessage)
         logFile.write(format(logMessage) + '\n')
+        skippedDueToMimeCount++
         return
       }
       const file = fs.readFileSync(filePath)
@@ -89,12 +96,17 @@ async function executeForAllFilesInDir(dir) {
         console.log(logMessage)
         logFile.write(format(logMessage) + '\n')
         fs.renameSync(filePath, newPath)
+        renamedCount++
       } else {
         const logMessage = `Skipping '${filePath}' as name is correct`
         console.log(logMessage)
         logFile.write(format(logMessage) + '\n')
+        renamedCount
       }
     }
   }
+  const logMessage = `Checked ${count} files, skipped ${skippedDueToMimeCount} files due to mime type and ${skippedDueToCorrectNameCount} files due to correct name, renamed ${renamedCount} files and time-shifted ${timeShiftedCount} files.`
+  console.log(logMessage)
+  logFile.write(format(logMessage) + '\n')
 }
 executeForAllFilesInDir(dataDir)
