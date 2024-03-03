@@ -33,7 +33,7 @@ const dataDir =
 
 // 2. set the model of camera whose time setting was off
 // const cameraModelWithCorrectTime = 'SM-G950F' // handy Barbara
-const cameraModels = ['TG-5', 'DMC-FZ2000']
+const cameraModelsWithOffTime = ['TG-5', 'DMC-FZ2000']
 
 // 3. set the time difference to correct for in milliseconds
 // this number will be added to recorded time
@@ -50,51 +50,43 @@ async function executeForAllFilesInDir(dir) {
   // ...and loop them
   for (const fileName of files) {
     const filePath = `${dir}\\${fileName}`
-    console.log(`filePath:`, filePath)
     // call this function recursively for contained directories
     if (fs.statSync(filePath).isDirectory()) {
       executeForAllFilesInDir(filePath)
     } else {
-      // read file
       const fileType = await fileTypeFromFile(filePath)
       const mimeType = fileType?.mime
-      // console.log(`mimetype for ${filePath}:`, mimeType)
       if (mimeType !== 'image/jpeg') {
-        console.log(
-          `skipping ${filePath}, because its mimetype ${mimeType} is not a jpeg`,
-        )
+        const logMessage = `skipping ${filePath}, because it's mimetype ${mimeType} is not a jpeg`
+        console.log(logMessage)
+        logFile.write(format(logMessage) + '\n')
         return
       }
       const file = fs.readFileSync(filePath)
       // piexif wants to receive a base-64 formatted string
       const parsedFile = parser.format('.jpg', file)
       const exifData = piexif.load(parsedFile.content)
-      // const model = get(exifData, '0th.272', null)
-      const model = exifData['0th'][272]
-      if (!(model && cameraModels.includes(model))) {
-        console.log(
-          `skipping ${filePath}, because model ${model} is not in list`,
-        )
-        return
-      }
-      // const dateTimeString = get(exifData, 'Exif.36867', null)
       const dateTimeString = exifData.Exif[36867]
-      if (dateTimeString) {
-        let dateTime = moment(dateTimeString, 'YYYY:MM:DD HH:mm:ss')
-        // compensate for wrong time on camera
+      if (!dateTimeString) continue
+
+      let dateTime = moment(dateTimeString, 'YYYY:MM:DD HH:mm:ss')
+      // compensate for wrong time on camera
+      const model = exifData['0th'][272]
+      const changeTime = model && cameraModelsWithOffTime.includes(model)
+      if (changeTime) {
         dateTime = dateTime + timeDiff
-        const newBaseFileName = moment(dateTime).format('YYYY-MM-DD HH-mm-ss')
-        // extract base file name without extension
-        // source: https://stackoverflow.com/a/4250408/712005
-        const baseFileName = fileName.replace(/\.[^/.]+$/, '')
-        // only rename if name changes
-        if (newBaseFileName !== baseFileName) {
-          const newPath = `${dir}\\${newBaseFileName}.jpg`
-          const logMessage = `Renaming '${filePath}' to '${newPath}'`
-          console.log(logMessage)
-          logFile.write(format(logMessage) + '\n')
-          fs.renameSync(filePath, newPath)
-        }
+      }
+      const newBaseFileName = moment(dateTime).format('YYYY-MM-DD HH-mm-ss')
+      // extract base file name without extension
+      // source: https://stackoverflow.com/a/4250408/712005
+      const baseFileName = fileName.replace(/\.[^/.]+$/, '')
+      // only rename if name changes
+      if (newBaseFileName !== baseFileName) {
+        const newPath = `${dir}\\${newBaseFileName}.jpg`
+        const logMessage = `Renaming '${filePath}' to '${newPath}'`
+        console.log(logMessage)
+        logFile.write(format(logMessage) + '\n')
+        fs.renameSync(filePath, newPath)
       }
     }
   }
